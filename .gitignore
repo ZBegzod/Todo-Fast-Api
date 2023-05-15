@@ -1,5 +1,5 @@
 env
-migrations
+migrations/versions
 media
 static
 !**/__pycache__/
