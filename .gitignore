@@ -1,5 +1,5 @@
 env
-
+migrations
 media
 static
 !**/__pycache__/
@@ -8,6 +8,3 @@ static
 /.idea
 /.vs
 .env
-apps/applications/migrations
-apps/order/migrations
-apps/product/migrations
