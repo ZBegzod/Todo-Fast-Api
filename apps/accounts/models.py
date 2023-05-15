@@ -13,7 +13,7 @@ class Role(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(length=120))
     is_active = Column(Boolean, default=True)
-    user_id = Column(Integer, ForeignKey('user.id', ondelete='CASCADE'))
+    user_id = Column(Integer, ForeignKey('profile.id', ondelete='CASCADE'))
     user = relationship("User", back_populates="roles")
 
     def __repr__(self):
@@ -21,7 +21,7 @@ class Role(Base):
 
 
 class User(Base):
-    __tablename__ = 'profiles'
+    __tablename__ = 'profile'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     fio = Column(String(length=150))
