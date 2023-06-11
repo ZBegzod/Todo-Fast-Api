@@ -13,8 +13,7 @@ class Role(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(length=120))
     is_active = Column(Boolean, default=True)
-    user_id = Column(Integer, ForeignKey('profile.id', ondelete='CASCADE'))
-    user = relationship("User", back_populates="roles")
+    user = relationship("User", back_populates="role")
 
     def __repr__(self):
         return f"{self.name}"
@@ -35,7 +34,8 @@ class User(Base):
     is_superuser = Column(Boolean, default=False)
     updated_at = Column(DateTime, default=datetime.utcnow(), nullable=False, onupdate=datetime.utcnow())
     created_at = Column(TIMESTAMP(timezone=True), server_default=text('now()'))
-    roles = relationship("Role", back_populates="user")
+    role_id = Column(Integer, ForeignKey('roles.id', ondelete='CASCADE'))
+    role = relationship("Role", back_populates="user")
 
     def __repr__(self):
         return f"{self.username}"
